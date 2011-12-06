@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "kafkaesque"
-  gem.homepage = "http://github.com/stefan_mees/kafkaesque"
+  gem.homepage = "http://github.com/wooga/kafkaesque"
   gem.license = "MIT"
   gem.summary = %Q{blablu}
   gem.description = %Q{blablu}
