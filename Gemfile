@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "kafka-rb", ">= 0.0.6"
+gem "wooga-kafka-rb", ">= 0.0.7"
 gem "geoip"
 gem "redis"
 
