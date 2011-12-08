@@ -9,7 +9,10 @@ module Kafkaesque
     def do_work
       loop do
         element = @queue.take
-        break if element == :stop
+        if element == :stop
+          @handler.cleanup if @handler.respond_to?(:cleanup)
+          return
+        end
         event = Event.new(element)
         @handler.handle(event)
       end

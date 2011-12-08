@@ -7,7 +7,6 @@ GEM
       bundler (~> 1.0)
       git (>= 1.2.5)
       rake
-    kafka-rb (0.0.6)
     metaclass (0.0.1)
     mocha (0.10.0)
       metaclass (~> 0.0.1)
@@ -16,6 +15,7 @@ GEM
     rcov (0.9.11-java)
     redis (2.2.2)
     shoulda (2.11.3)
+    wooga-kafka-rb (0.0.7)
 
 PLATFORMS
   java
@@ -25,8 +25,8 @@ DEPENDENCIES
   bundler (~> 1.0.0)
   geoip
   jeweler (~> 1.6.4)
-  kafka-rb (>= 0.0.6)
   mocha
   rcov
   redis
   shoulda
+  wooga-kafka-rb (>= 0.0.7)
