@@ -8,7 +8,7 @@ module Kafkaesque
       @topic = topic
       @config = config
       @redis  = Fetcher.create_redis_client(config)
-      offset = @redis.hget(offset_key, topic).to_i
+      offset = (@redis.hget(offset_key, topic) || -1).to_i
       @kafka  = Fetcher.create_kafka_client(config, topic, offset)
       @filter = config[:selection_filter]
     end

@@ -27,7 +27,7 @@ class TestFetcher < Test::Unit::TestCase
     should "queue only messages which match filter" do
       config = Hash[:handler => String, :selection_filter => /^(3|4)$/]
       Kafkaesque::Fetcher.expects(:create_redis_client).with(config).returns(stub('redis', :hset => nil, :hget => nil))
-      Kafkaesque::Fetcher.expects(:create_kafka_client).with(config, 'a', 0).returns(FakeKafkaClient.new('a'))
+      Kafkaesque::Fetcher.expects(:create_kafka_client).with(config, 'a', -1).returns(FakeKafkaClient.new('a'))
       fetcher = Kafkaesque::Fetcher.new(@queue, 'a', config)
       Thread.new do
         sleep 0.1
@@ -43,12 +43,21 @@ class TestFetcher < Test::Unit::TestCase
       config = Hash[:handler => String]
       Kafkaesque::Consumer.stop
       Kafkaesque::Fetcher.expects(:create_redis_client).with(config).returns(stub('redis', :hset => nil, :hget => nil))
-      Kafkaesque::Fetcher.expects(:create_kafka_client).with(config, 'a', 0).returns(FakeKafkaClient.new('a'))
+      Kafkaesque::Fetcher.expects(:create_kafka_client).with(config, 'a', -1).returns(FakeKafkaClient.new('a'))
       fetcher = Kafkaesque::Fetcher.new(@queue, 'a', config)
       fetcher.do_fetch
 
       assert_equal 1, @queue.length
       assert_equal "a 127.0.0.1 1234 /w/0/", @queue.take
+    end
+    
+    should "start with offset -1 when no offset is stored in redis" do
+      config = Hash[:handler => String]
+      Kafkaesque::Consumer.stop
+      Kafkaesque::Fetcher.expects(:create_redis_client).with(config).returns(stub('redis', :hset => nil, :hget => nil))
+      Kafkaesque::Fetcher.expects(:create_kafka_client).with(config, 'a', -1).returns(FakeKafkaClient.new('a'))
+      fetcher = Kafkaesque::Fetcher.new(@queue, 'a', config)
+      fetcher.do_fetch
     end
 
     should "start with offset stored in redis" do

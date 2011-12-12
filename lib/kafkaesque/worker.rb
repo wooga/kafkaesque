@@ -14,7 +14,12 @@ module Kafkaesque
           return
         end
         event = Event.new(element)
-        @handler.handle(event)
+        begin
+          @handler.handle(event)
+        rescue
+          p $!
+          puts $!.backtrace
+        end
       end
     end
 
