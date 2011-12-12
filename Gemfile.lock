@@ -15,7 +15,7 @@ GEM
     rcov (0.9.11-java)
     redis (2.2.2)
     shoulda (2.11.3)
-    wooga-kafka-rb (0.0.7)
+    wooga-kafka-rb (0.0.8)
 
 PLATFORMS
   java
@@ -29,4 +29,4 @@ DEPENDENCIES
   rcov
   redis
   shoulda
-  wooga-kafka-rb (>= 0.0.7)
+  wooga-kafka-rb (>= 0.0.8)

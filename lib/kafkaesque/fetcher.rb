@@ -8,8 +8,7 @@ module Kafkaesque
       @topic = topic
       @config = config
       @redis  = Fetcher.create_redis_client(config)
-      offset = (@redis.hget(offset_key, topic) || -1).to_i
-      @kafka  = Fetcher.create_kafka_client(config, topic, offset)
+      @kafka  = Fetcher.create_kafka_client(config, topic, offset(topic))
       @filter = config[:selection_filter]
     end
 
@@ -30,11 +29,16 @@ module Kafkaesque
       call = $1 if message_string =~ MESSAGE_PATTERN
       return call =~ @filter
     end
+    
+    def offset(topic)
+      offset = @redis.hget(offset_key, topic)
+      offset && offset.to_i 
+    end
 
     def offset_key
       "#{@config[:handler].name.downcase}"
     end
-
+    
     def self.create_kafka_client(config, topic, offset)
       Kafka::Consumer.new(
         :host => config[:kafka][:host],
@@ -47,7 +51,7 @@ module Kafkaesque
     def self.create_redis_client(config)
       Redis.new(:host => config[:kafka][:host], :db => 15)
     end
-
+    
   end
 end
 
