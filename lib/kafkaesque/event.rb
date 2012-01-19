@@ -7,9 +7,10 @@ module Kafkaesque
 
     URI_PATTERN = /^\/[kw]\/([^\/]+)\/$/
 
-    attr_reader :game, :stamp, :uri, :params, :ip
+    attr_reader :payload, :game, :stamp, :uri, :params, :ip
 
     def initialize(payload)
+      @payload = payload
       @game, @ip, @stamp, @uri, @params = payload.split(' ')
       @params = Event.parse(params)
       @stamp = stamp.to_i
