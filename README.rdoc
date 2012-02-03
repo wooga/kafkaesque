@@ -1,8 +1,8 @@
-= kafkaesque
+= Kafkaesque
 
-Description goes here.
+A JRuby-based event stream processing framework for Kafka.
 
-== Contributing to kafkaesque
+== Contributing to Kafkaesque
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -14,4 +14,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 wooga.
+Copyright (c) 2011 Wooga GmbH
