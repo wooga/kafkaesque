@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kafkaesque}
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Stefan Mees}, %q{Tim Lossen}]
-  s.date = %q{2012-05-11}
+  s.date = %q{2012-05-14}
   s.description = %q{blablu}
   s.email = %q{stefan.mees@wooga.com}
   s.extra_rdoc_files = [
@@ -17,12 +17,14 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
+    ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "kafkaesque.gemspec",
     "lib/kafkaesque.rb",
     "lib/kafkaesque/bookings.rb",
     "lib/kafkaesque/consumer.rb",
