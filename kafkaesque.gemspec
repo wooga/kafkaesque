@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Stefan Mees}, %q{Tim Lossen}]
-  s.date = %q{2012-05-14}
-  s.description = %q{blablu}
+  s.date = %q{2012-06-08}
+  s.description = %q{helper lib to create jruby kafka consumers}
   s.email = %q{stefan.mees@wooga.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -26,14 +26,11 @@ Gem::Specification.new do |s|
     "VERSION",
     "kafkaesque.gemspec",
     "lib/kafkaesque.rb",
-    "lib/kafkaesque/bookings.rb",
     "lib/kafkaesque/consumer.rb",
     "lib/kafkaesque/event.rb",
     "lib/kafkaesque/fetcher.rb",
     "lib/kafkaesque/worker.rb",
     "test/helper.rb",
-    "test/test_bookings.rb",
-    "test/test_event.rb",
     "test/test_fetcher.rb",
     "test/test_worker.rb"
   ]
@@ -41,7 +38,7 @@ Gem::Specification.new do |s|
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.9}
-  s.summary = %q{blablu}
+  s.summary = %q{helper lib to create jruby kafka consumers}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

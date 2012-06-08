@@ -17,13 +17,12 @@ Jeweler::Tasks.new do |gem|
   gem.name = "kafkaesque"
   gem.homepage = "http://github.com/wooga/kafkaesque"
   gem.license = "MIT"
-  gem.summary = %Q{blablu}
-  gem.description = %Q{blablu}
+  gem.summary = %Q{helper lib to create jruby kafka consumers}
+  gem.description = %Q{helper lib to create jruby kafka consumers}
   gem.email = "stefan.mees@wooga.com"
   gem.authors = ["Stefan Mees", "Tim Lossen"]
   gem.files.include('lib/**/*.rb')
   # dependencies defined in Gemfile
-  
 end
 Jeweler::RubygemsDotOrgTasks.new
 

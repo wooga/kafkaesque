@@ -4,6 +4,7 @@ module Kafkaesque
     def initialize(queue, config)
       @queue = queue
       @handler = config[:handler].new(config)
+      @event_class = (config[:event] || Event)
     end
 
     def do_work
@@ -13,7 +14,7 @@ module Kafkaesque
           @handler.cleanup if @handler.respond_to?(:cleanup)
           return
         end
-        event = Event.new(element)
+        event = @event_class.new(element)
         begin
           @handler.handle(event)
         rescue

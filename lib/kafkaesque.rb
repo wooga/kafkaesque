@@ -6,7 +6,6 @@ require File.join(File.dirname(__FILE__), 'kafkaesque', 'event')
 require File.join(File.dirname(__FILE__), 'kafkaesque', 'worker')
 require File.join(File.dirname(__FILE__), 'kafkaesque', 'fetcher')
 require File.join(File.dirname(__FILE__), 'kafkaesque', 'consumer')
-require File.join(File.dirname(__FILE__), 'kafkaesque', 'bookings')
 
 # monkey patch: also call block with empty list of messages
 Kafka::Consumer.class_eval do
