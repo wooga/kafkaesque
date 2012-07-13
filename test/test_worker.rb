@@ -34,21 +34,25 @@ class TestWorker < Test::Unit::TestCase
       worker = Kafkaesque::Worker.new(@queue, :handler => handler_class)
       worker.do_work
     end
-    
+
     should "rescue exceptions thrown by handler" do
       handler = mock("handler")
       handler.expects(:handle).raises(StandardError, 'test')
       handler_class = mock("handler_class")
       handler_class.expects(:new).returns(handler)
-      
+
       1.times { |i| @queue.put("aa 127.0.0.1 #{i} /k/call/") }
       @queue.put(:stop)
       worker = Kafkaesque::Worker.new(@queue, :handler => handler_class)
-      assert_nothing_raised do 
-        worker.do_work
+      _, stdout, _ = silence_is_golden do
+        assert_nothing_raised do
+          worker.do_work
+        end
       end
+
+      assert_match /StandardError: test/, stdout
     end
-    
+
   end
 
 end
