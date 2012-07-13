@@ -31,10 +31,9 @@ module Kafkaesque
   private
 
     def create_worker(i)
-      worker = Worker.new(queue, config)
       Thread.new do
         puts "started worker #{i}"
-        worker.do_work
+        Worker.new(queue, config).do_work
         puts "stopped worker #{i}"
       end
     end
